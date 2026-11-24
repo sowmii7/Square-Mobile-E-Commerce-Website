@@ -178,6 +178,10 @@ def inject_counts():
 @app.context_processor
 def off_canvas_cart():
     global total_price
+
+    if not current_user.is_authenticated:
+        return dict(cart_items= [], total_price=0)  # keep the same keys your template uses
+
     rows = db.session.execute(db.select(Cart).where(Cart.user_id == current_user.id)).scalars().all()
 
     items = []
