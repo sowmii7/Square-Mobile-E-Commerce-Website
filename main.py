@@ -26,7 +26,7 @@ app = Flask(__name__, static_folder='assets', static_url_path="/assets")
 def ping():
     return "ok"
 
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 bootstrap = Bootstrap5(app)
 
