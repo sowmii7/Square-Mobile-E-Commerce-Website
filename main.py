@@ -11,7 +11,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import func
 import os
 import stripe
-from stripe import StripeClient
 from dotenv import load_dotenv
 
 
