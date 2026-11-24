@@ -205,11 +205,7 @@ def off_canvas_cart():
 
 
 with app.app_context():
-    db.session.add(User(
-        email_address = "sowmya79@gmail.com",
-        password = "admin@1234",
-    ))
-    db.session.commit()
+    db.create_all()
 
 @app.route('/')
 def index():
