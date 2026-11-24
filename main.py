@@ -30,7 +30,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 bootstrap = Bootstrap5(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mobiles.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DBI_URI", 'sqlite:///mobiles.db')
 
 db = SQLAlchemy(model_class = Base)
 db.init_app(app)
