@@ -12,7 +12,7 @@ from sqlalchemy import func
 import os
 import stripe
 from dotenv import load_dotenv
-import psycopg
+import psycopg2
 import psycopg_binary
 
 
