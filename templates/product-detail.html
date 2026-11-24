@@ -1,0 +1,122 @@
+{% include "header.html" %}
+<!--start breadcrumb-->
+<section class="py-4 section-breadcrumb">
+  <div class="container px-3">
+  <h2 class="d-none">Product Details</h2>
+    <nav>
+      <ol class="breadcrumb mb-0 gap-2">
+        <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">Home</a></li>
+        <li><i class="bi bi-chevron-right"></i></li>
+        <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">{{category}}</a></li>
+        <li><i class="bi bi-chevron-right"></i></li>
+        <li class="breadcrumb-item breadcrumb-active">{{product.name}}</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<!--end breadcrumb-->
+
+<!--start product details-->
+<section class="py-5 product-details">
+  <div class="container px-3">
+    <div class="row g-4 g-lg-5">
+
+      <!-- Left: single product image -->
+      <div class="col-12 col-lg-6">
+        <div class="product-images">
+          <img src="/assets/{{product.image_url}}"
+               class="img-fluid rounded-3 w-100"
+               style="max-height: 520px; object-fit: contain; background: #f8f9fa;"
+               alt="{{product.name}}">
+        </div>
+      </div>
+
+      <!-- Right: product info -->
+      <div class="col-12 col-lg-6">
+        <div class="product-details">
+          <p class="mb-1 text-muted text-uppercase fw-semibold" style="font-size:0.8rem; letter-spacing:0.05em;">{{category}}</p>
+          <h2 class="mb-0">{{product.name}}</h2>
+          <div class="d-flex align-items-center gap-2 my-3">
+            <span class="ratings text-warning">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </span>
+            <span class="font-14 text-muted">(568 reviews)</span>
+          </div>
+          <div class="product-price d-flex align-items-center gap-2 mb-3">
+            <span class="fs-2 fw-bold">₹{{product.price}}</span>
+            <span class="fs-6 text-decoration-line-through text-body-tertiary text-opacity-50">₹45000</span>
+            <span class="badge bg-danger rounded-5 px-3 py-2">-25%</span>
+          </div>
+
+          <hr class="border-dark border-opacity-25 my-3">
+
+          <p class="text-secondary lh-lg mb-0" style="font-size:0.95rem;">{{product.description}}</p>
+
+          <hr class="border-dark border-opacity-25 my-3">
+
+          <div class="product-quantity mb-4">
+            <p class="mb-2 fw-semibold">Quantity</p>
+            <div class="input-group" style="max-width: 160px;">
+              <button class="btn border border-2 border-end-0" data-decrement type="button"><i class="bi bi-dash"></i></button>
+              <input type="number" class="form-control border-2 text-center" min="1" value="1" readonly>
+              <button class="btn border border-2 border-start-0" data-increment type="button"><i class="bi bi-plus"></i></button>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <button type="button" class="btn btn-dark border border-2 rounded-5 border-dark py-2 px-5 d-flex align-items-center justify-content-center gap-2 flex-fill">
+              <i class="bi bi-cart-plus"></i>Add to cart
+            </button>
+            <button type="button" class="btn border border-2 py-2 px-4 rounded-5 d-flex align-items-center gap-2">
+              <i class="bi bi-heart"></i>Wishlist
+            </button>
+          </div>
+
+          <div class="bg-light rounded-3 p-3 mb-4">
+            <p class="mb-2 d-flex align-items-center gap-2 font-14">
+              <i class="bi bi-truck fs-5"></i>
+              <span><span class="fw-semibold">Free shipping & returns:</span> Enjoy free shipping and returns on all orders over ₹2000!</span>
+            </p>
+            <p class="mb-0 d-flex align-items-center gap-2 font-14">
+              <i class="bi bi-alarm fs-5"></i>
+              <span><span class="fw-semibold">Estimated Delivery:</span> 5–7 business days</span>
+            </p>
+          </div>
+
+          <p class="mb-2 d-flex align-items-center gap-2 font-14 fw-semibold"><i class="bi bi-share"></i>Share this product</p>
+          <div class="d-flex align-items-center gap-2 mb-4">
+            <a href="javascript:;" class="btn btn-sm btn-outline-dark border"><i class="bi bi-facebook"></i></a>
+            <a href="javascript:;" class="btn btn-sm btn-outline-dark border"><i class="bi bi-twitter-x"></i></a>
+            <a href="javascript:;" class="btn btn-sm btn-outline-dark border"><i class="bi bi-linkedin"></i></a>
+            <a href="javascript:;" class="btn btn-sm btn-outline-dark border"><i class="bi bi-instagram"></i></a>
+            <a href="javascript:;" class="btn btn-sm btn-outline-dark border"><i class="bi bi-snapchat"></i></a>
+          </div>
+
+          <hr class="border-dark border-opacity-25">
+
+          <div style="font-size:0.9rem;">
+            <p class="mb-1"><span class="fw-semibold">SKU:</span> BA584726</p>
+            <p class="mb-1"><span class="fw-semibold">Vendor:</span> Michle Deo</p>
+            <p class="mb-1"><span class="fw-semibold">Available:</span> <span class="text-success fw-semibold">In Stock</span></p>
+            <p class="mb-0"><span class="fw-semibold">Categories:</span>
+              <a href="javascript:;" class="link-secondary">{{category}}</a>,
+<!--              <a href="javascript:;" class="link-secondary">Jeans</a>,-->
+<!--              <a href="javascript:;" class="link-secondary">Clothes</a>-->
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!--end row-->
+  </div>
+</section>
+<!--end product details-->
+
+
+
+{% include "footer.html" %}

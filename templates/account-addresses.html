@@ -1,0 +1,262 @@
+{% include "header.html" %}
+
+  <!--start main content-->
+  <main class="main-content">
+
+    <!--start breadcrumb-->
+    <section class="section-breadcrumb bg-img-page-header d-flex align-items-center justify-content-center">
+      <div class="container px-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>My Addresses</h2>
+        <nav>
+          <ol class="breadcrumb mb-0 gap-2">
+            <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i></li>
+            <li class="breadcrumb-item breadcrumb-active">My Addresses</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!--end breadcrumb-->
+
+    <!--start shop-->
+    <section class="py-5 my-account-section">
+      <div class="container px-3">
+        <div class="row g-lg-4">
+          <div class="col-12 col-lg-3">
+            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter"
+              class="btn btn-dark d-lg-none btn-filter-mobile rounded-bottom-0 d-flex align-items-center gap-2 px-4"><i
+                class="bi bi-funnel"></i><span>Account</span></button>
+             <nav class="navbar navbar-expand-lg p-0">
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFilter"
+                aria-labelledby="offcanvasFilterLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasFilterLabel">My account</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <div class="my-account-menu w-100 border rounded-3 p-3">
+                    <div class="list-group list-group-flush">
+                      <a href="{{url_for('account_wishlist')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3"><span><i class="bi bi-heart"></i></span>Wishlist</a>
+                      <a href="{{url_for('shopping_cart')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3"><span><i class="bi bi-basket-fill"></i></span>Your Cart</a>
+                      <a href="{{url_for('account_my_profile')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3"><span><i class="bi bi-person-square"></i></span>My Profile</a>
+                      <a href="{{url_for('account_addresses')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3 active"><span><i class="bi bi-geo-alt"></i></span>Addresses</a>
+                      <a href="{{url_for('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3"><span><i class="bi bi-box-arrow-left"></i></span>Logout</a>
+                    </div>
+                  </div><!--end filters-->
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <div class="col-12 col-lg-9">
+            <div class="my-profile">
+              <h4 class="mb-4">My Addresses</h4>
+
+              <!-- Flash messages (success / error after saving) -->
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  <div class="mb-3">
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }} alert-dismissible fade show py-2" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endwith %}
+
+              <!-- Saved addresses (from the database) -->
+              {% for address in addresses %}
+              <div class="card rounded-3 border {% if not loop.first %}mt-4{% endif %}">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <h5 class="mb-0">{{ address.contact_name }}</h5>
+                    {% if loop.first %}<span class="badge rounded-5 bg-dark">Primary</span>{% endif %}
+                  </div>
+                  <div class="mt-3">
+                    <address class="mb-0">
+                      {{ address.address }}{% if address.locality %}, {{ address.locality }}{% endif %}<br>
+                      {{ address.city }}, {{ address.state }} - {{ address.pincode }}<br>
+                      Mobile: {{ address.contact_number }}
+                    </address>
+                  </div>
+                  <div class="mt-3 d-flex align-items-center gap-3">
+                    <button type="button" class="btn btn-sm btn-outline-dark px-4 rounded-3"
+                            data-bs-toggle="modal" data-bs-target="#editAddressModal{{ address.id }}">Edit</button>
+
+                    <form method="POST" action="{{ url_for('account_addresses') }}" class="m-0"
+                          onsubmit="return confirm('Delete this address?');">
+                      <input type="hidden" name="delete_address_id" value="{{ address.id }}">
+                      <button type="submit" class="btn btn-sm btn-outline-danger px-4 rounded-3">Delete</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% else %}
+              <div class="card rounded-3 border">
+                <div class="card-body p-4 text-muted">You have no saved addresses yet.</div>
+              </div>
+              {% endfor %}
+
+              <!-- Add new address button -->
+              <div class="mt-4">
+                <button type="button" class="btn btn-sm btn-outline-dark border-2 border rounded-3 px-4"
+                        data-bs-toggle="modal" data-bs-target="#addAddressModal">
+                  <i class="bi bi-plus-lg me-2"></i>Add new Address
+                </button>
+              </div>
+            </div>
+          </div>
+        </div><!--end row-->
+      </div>
+    </section>
+    <!--end shop-->
+
+
+    <!-- ==========================================================
+         ADD NEW ADDRESS MODAL (one copy, outside every loop)
+         ========================================================== -->
+    <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form method="POST" action="{{ url_for('account_addresses') }}">
+
+            <div class="modal-header px-4">
+              <h1 class="modal-title fs-5" id="addAddressTitle">Add New Address</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-4">
+              <h6 class="fw-semibold mb-3">Contact Details</h6>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="addName" name="contact" placeholder="Name" required>
+                <label for="addName">Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="addMobileNo" name="mobileno" placeholder="Mobile No" required>
+                <label for="addMobileNo">Mobile No</label>
+              </div>
+
+              <div class="mt-4">
+                <h6 class="fw-semibold mb-3">Address</h6>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="addPinCode" name="pincode" placeholder="Pin Code" required>
+                  <label for="addPinCode">Pin Code</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="addAddress" name="address" placeholder="Address" required>
+                  <label for="addAddress">Address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="addLocality" name="locality" placeholder="Locality / Town">
+                  <label for="addLocality">Locality / Town</label>
+                </div>
+                <div class="row g-3">
+                  <div class="col">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="addCity" name="city" placeholder="City / District" required>
+                      <label for="addCity">City / District</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="addState" name="state" placeholder="State" required>
+                      <label for="addState">State</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer px-4">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dark">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end Add address modal -->
+
+
+    <!-- ==========================================================
+         EDIT ADDRESS MODALS (one per saved address, unique ids)
+         ========================================================== -->
+    {% for address in addresses %}
+    <div class="modal fade" id="editAddressModal{{ address.id }}" tabindex="-1"
+         aria-labelledby="editAddressTitle{{ address.id }}" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form method="POST" action="{{ url_for('account_addresses') }}">
+            <input type="hidden" name="address_id" value="{{ address.id }}">
+
+            <div class="modal-header px-4">
+              <h1 class="modal-title fs-5" id="editAddressTitle{{ address.id }}">Edit Address</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-4">
+              <h6 class="fw-semibold mb-3">Contact Details</h6>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="editName{{ address.id }}" name="contact"
+                       placeholder="Name" value="{{ address.contact_name or '' }}" required>
+                <label for="editName{{ address.id }}">Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="editMobileNo{{ address.id }}" name="mobileno"
+                       placeholder="Mobile No" value="{{ address.contact_number or '' }}" required>
+                <label for="editMobileNo{{ address.id }}">Mobile No</label>
+              </div>
+
+              <div class="mt-4">
+                <h6 class="fw-semibold mb-3">Address</h6>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="editPinCode{{ address.id }}" name="pincode"
+                         placeholder="Pin Code" value="{{ address.pincode or '' }}" required>
+                  <label for="editPinCode{{ address.id }}">Pin Code</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="editAddress{{ address.id }}" name="address"
+                         placeholder="Address" value="{{ address.address or '' }}" required>
+                  <label for="editAddress{{ address.id }}">Address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="editLocality{{ address.id }}" name="locality"
+                         placeholder="Locality / Town" value="{{ address.locality or '' }}">
+                  <label for="editLocality{{ address.id }}">Locality / Town</label>
+                </div>
+                <div class="row g-3">
+                  <div class="col">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="editCity{{ address.id }}" name="city"
+                             placeholder="City / District" value="{{ address.city or '' }}" required>
+                      <label for="editCity{{ address.id }}">City / District</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="editState{{ address.id }}" name="state"
+                             placeholder="State" value="{{ address.state or '' }}" required>
+                      <label for="editState{{ address.id }}">State</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer px-4">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dark">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- end Edit address modals -->
+
+  </main>
+  <!--end main content-->
+
+{% include "footer.html" %}

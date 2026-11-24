@@ -1,0 +1,107 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+
+  <!--start main content-->
+  <main class="main-content">
+
+    <!--start breadcrumb-->
+    <section class="section-breadcrumb bg-img-page-header d-flex align-items-center justify-content-center">
+      <div class="container px-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>Create an account</h2>
+        <nav>
+          <ol class="breadcrumb mb-0 gap-2">
+            <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i></li>
+            <li class="breadcrumb-item breadcrumb-active">Create an account</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!--end breadcrumb-->
+    
+    <section class="py-5">
+        <div class="container px-3">
+           <div class="row g-4 g-lg-5 align-items-center">
+             <div class="col-12 col-xl-6">
+               <div class="auth-register p-4 p-sm-5 rounded-3 border">
+                  <h4 class="mb-0">Create an account</h4>
+                  <p>I already have an account <a href="auth-login.html" class="text-decoration-underline link-body-emphasis">Sign In</a></p>
+                  <div class="form-body mt-5">
+                    <div class="row row-cols-1 g-3">
+                        {% with messages = get_flashed_messages(with_categories = True) %}
+                            {% if messages %}
+                                <div class="col">
+                                  {% for message in messages %}
+                                    <div class="alert alert-danger py-2 mb-2" role="alert">{{ message }}</div>
+                                  {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+
+
+
+                       <div class="col">
+
+                         {{ render_form(form, novalidate = True, button_map = {"submit" : "primary"}) }}
+<!--                          <label for="EmailAddress" class="form-label" name = "email address">Email address</label>-->
+<!--                          <input type="email" class="form-control form-control-lg border-2" id="EmailAddress">-->
+<!--                       </div>-->
+<!--                       <div class="col">-->
+<!--                        <label for="inputChoosePassword" class="form-label">Password</label>-->
+<!--                        <div class="input-group" id="show_hide_password">-->
+<!--													<input type="password" name = "password" class="form-control form-control-lg border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password">-->
+<!--                          <a href="javascript:;" class="input-group-text bg-transparent"><i class="bi bi-eye-slash-fill"></i></a>-->
+<!--												</div>-->
+<!--                      </div>  -->
+<!--                      <div class="col">-->
+<!--                        <label for="ConfirmPassword" class="form-label">Confirm Password</label>-->
+<!--                        <div class="input-group" id="show_hide_password_confirm">-->
+<!--													<input type="password" name = "confirm password" class="form-control form-control-lg border-end-0" id="ConfirmPassword" value="12345678" placeholder="Enter Password">-->
+<!--                          <a href="javascript:;" class="input-group-text bg-transparent"><i class="bi bi-eye-slash-fill"></i></a>-->
+<!--												</div>-->
+<!--                      </div>-->
+<!--                      <div class="col">-->
+<!--                        <div class="form-check">-->
+<!--                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>-->
+<!--                          <label class="form-check-label" for="flexCheckChecked">-->
+<!--                            I agree to the User-->
+<!--                          </label>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <div class="col">-->
+<!--                        <div class="d-grid">-->
+<!--                          <a href="javascript:;" class="btn btn-dark btn-lg px-4 rounded-3"><span class="fs-6">Create an account</span></a>-->
+<!--                        </div>-->
+<!--                      </div>-->
+                      <div class="col">
+                        <div class="separator section-padding mt-4">
+                          <div class="line"></div>
+                          <p class="mb-0">OR SIGN UP WITH</p>
+                          <div class="line"></div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="d-flex flex-column flex-lg-row align-items-center gap-2">
+                           <button type="button" class="btn btn-outline-dark w-100 border border-2 flex-fill d-flex align-items-center gap-2 justify-content-center"><i class="bi bi-facebook"></i>Facebook</button>
+                           <button type="button" class="btn btn-outline-dark w-100 border border-2 flex-fill d-flex align-items-center gap-2 justify-content-center"><i class="bi bi-twitter-x"></i>Twitter</button>
+                           <button type="button" class="btn btn-outline-dark w-100 border border-2 flex-fill d-flex align-items-center gap-2 justify-content-center"><i class="bi bi-apple"></i>Apple</button>
+                        </div>
+                      </div>
+                    </div><!--end row-->
+                  </div>
+               </div>
+             </div> 
+             <div class="col-12 col-xl-6 d-none d-xl-flex">
+               <div class="auth-register-img">
+                  <img src="../assets/images/gallery/auth/register.png" class="img-fluid" width="650" alt="">
+               </div>
+             </div> 
+           </div><!--end row-->
+        </div>
+    </section>
+
+  </main>
+  <!--end main content-->
+
+
+{% include "footer.html" %}

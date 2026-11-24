@@ -1,0 +1,102 @@
+{% include "header.html" %}
+
+  <!--start main content-->
+  <main class="main-content">
+
+    <!--start breadcrumb-->
+    <section class="section-breadcrumb bg-img-page-header d-flex align-items-center justify-content-center">
+      <div class="container px-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>Contact Us</h2>
+        <nav>
+          <ol class="breadcrumb mb-0 gap-2">
+            <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i></li>
+            <li class="breadcrumb-item breadcrumb-active">Contact Us</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!--end breadcrumb-->
+
+    
+    <section class="py-5">
+      <div class="container px-3">
+        <div class="row g-4 g-lg-5">
+           <div class="col-12 col-lg-8">
+              <div class="contact-map border rounded-3 p-3 overflow-x-auto">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.8982732959175!2d78.09689497450802!3d9.942421574023937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00cf5b2aa9a1e3%3A0x9b25439aa776f045!2sBypass%20Road%2C%20Madurai%2C%20Tamil%20Nadu%20625018!5e0!3m2!1sen!2sin!4v1795338663585!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+           </div>
+           <div class="col-12 col-lg-4">
+            <div class="contact-details">
+              <h4 class="mb-4">Information</h4>
+              <div class="contact-number">
+                <p class="mb-1 fw-semibold">Phone:</p>
+                <p class="mb-0">+91-86208998099</p>
+              </div>
+              <div class="border-top my-3"></div>
+              <div class="contact-number mt-3">
+                <p class="mb-1 fw-semibold">Email:</p>
+                <p class="mb-0">sowmya79@gmail.com </p>
+              </div>
+              <div class="border-top my-3"></div>
+              <div class="contact-number mt-3">
+                <p class="mb-1 fw-semibold">Address:</p>
+                <p class="mb-0">5/1 Bypass Road,<br> Near City Union Bank, Madurai 625016</p>
+              </div>
+              <div class="border-top my-3"></div>
+              <div class="contact-number mt-3">
+                <p class="mb-1 fw-semibold">Open Time:</p>
+                <p class="mb-0">Mon - Sat: 10:30am - 9:00pm PST</p>
+                <p class="mb-0">Sunday: 8:00am - 4:00pm PST</p>
+              </div>
+            </div>
+           </div>
+        </div><!--end row-->
+        
+
+        <div class="card mt-5 border rounded-3">
+          <div class="card-body p-5">
+            <div class="text-center mb-5">
+              <h4>Get In Touch</h4>
+              <p>Fill out the form below to contact our sales team.</p>
+            </div>
+            <form class="contact-form">
+              <div class="row g-3">
+                 <div class="col-12 col-lg-6">
+                  <div>
+                    <label for="YourName" class="form-label">Your Name</label>
+                    <input type="text" class="form-control form-control-lg border-2" id="YourName" required placeholder="Enter your name">
+                  </div>
+                 </div>
+                 <div class="col-12 col-lg-6">
+                  <div>
+                    <label for="EmailAddress" class="form-label">Email Address</label>
+                    <input type="email" class="form-control form-control-lg border-2" id="EmailAddress" required placeholder="Enter Email Address">
+                  </div>
+                 </div>
+                 <div class="col-12 col-lg-12">
+                  <div>
+                    <label for="Message" class="form-label">Message</label>
+                    <textarea class="form-control form-control-lg border-2" rows="4" cols="5" id="Message" required placeholder="Message"></textarea>
+                  </div>
+                 </div>
+                 <div class="col-12 col-lg-12">
+                  <div>
+                    <button type="submit" class="btn btn-dark px-4 py-2">Send Message</button>
+                  </div>
+                 </div>
+
+              </div><!--end row-->
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  <!--end main content-->
+
+
+{% include "footer.html" %}

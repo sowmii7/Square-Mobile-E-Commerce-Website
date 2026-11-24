@@ -1,0 +1,121 @@
+{% include "header.html" %}
+
+  <!--start main content-->
+  <main class="main-content">
+
+    <!--start breadcrumb-->
+    <section class="section-breadcrumb bg-img-page-header d-flex align-items-center justify-content-center">
+      <div class="container px-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>Categories</h2>
+        <nav>
+          <ol class="breadcrumb mb-0 gap-2">
+            <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i></li>
+            <li class="breadcrumb-item breadcrumb-active">Categories</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!--end breadcrumb-->
+
+    <!--start shop-->
+    <section class="py-5 shop-page-section">
+      <div class="container px-3">
+         <div class="shop-categories">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
+              <div class="col">
+                <div class="category-card border p-3 rounded-3">
+                  <a href="../no_templates/shop-grid-left-sidebar.html">
+                    <img src="../assets/images/gallery/categories/grid-categories/01.png" class="rounded-3 img-fluid product-img" alt="">
+                  </a>
+                  <div class="mt-3">
+                    <h5 class="mb-1">Mobiles</h5>
+                    <p class="mb-0">289 Items</p>
+                  </div>
+                  <div class="d-grid mt-3">
+                    <a href="{{url_for('shop_list_mobiles')}}" class="btn btn-dark rounded-3 d-flex align-items-center justify-content-center gap-2 py-2"><span>Shop Now</span><i class="bi bi-arrow-up-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="category-card border p-3 rounded-3">
+                  <a href="{{url_for('shop_list_charger')}}">
+                    <img src="../assets/images/gallery/categories/grid-categories/02.png" class="rounded-3 img-fluid product-img" alt="">
+                  </a>
+                  <div class="mt-3">
+                    <h5 class="mb-1">Charger</h5>
+                    <p class="mb-0">344 Items</p>
+                  </div>
+                  <div class="d-grid mt-3">
+                    <a href="{{url_for('shop_list_charger')}}" class="btn btn-dark rounded-3 d-flex align-items-center justify-content-center gap-2 py-2"><span>Shop Now</span><i class="bi bi-arrow-up-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="category-card border p-3 rounded-3">
+                  <a href="{{url_for('shop_list_earphones')}}">
+                    <img src="../assets/images/gallery/categories/grid-categories/03.png" class="rounded-3 img-fluid product-img" alt="">
+                  </a>
+                  <div class="mt-3">
+                    <h5 class="mb-1">Earphones</h5>
+                    <p class="mb-0">176 Items</p>
+                  </div>
+                  <div class="d-grid mt-3">
+                    <a href="{{url_for('shop_list_earphones')}}" class="btn btn-dark rounded-3 d-flex align-items-center justify-content-center gap-2 py-2"><span>Shop Now</span><i class="bi bi-arrow-up-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="category-card border p-3 rounded-3">
+                  <a href="../no_templates/shop-grid-left-sidebar.html">
+                    <img src="../assets/images/gallery/categories/grid-categories/04.png" class="rounded-3 img-fluid product-img" alt="">
+                  </a>
+                  <div class="mt-3">
+                    <h5 class="mb-1">Phone cover</h5>
+                    <p class="mb-0">647 Items</p>
+                  </div>
+                  <div class="d-grid mt-3">
+                    <a href="{{url_for('shop_list_phonecase')}}" class="btn btn-dark rounded-3 d-flex align-items-center justify-content-center gap-2 py-2"><span>Shop Now</span><i class="bi bi-arrow-up-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="category-card border p-3 rounded-3">
+                  <a href="../no_templates/shop-grid-left-sidebar.html">
+                    <img src="../assets/images/gallery/categories/grid-categories/05.png" class="rounded-3 img-fluid product-img" alt="">
+                  </a>
+                  <div class="mt-3">
+                    <h5 class="mb-1">Camera Protection</h5>
+                    <p class="mb-0">582 Items</p>
+                  </div>
+                  <div class="d-grid mt-3">
+                    <a href="{{url_for('shop_list_camera')}}" class="btn btn-dark rounded-3 d-flex align-items-center justify-content-center gap-2 py-2"><span>Shop Now</span><i class="bi bi-arrow-up-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="category-card border p-3 rounded-3">
+                  <a href="../no_templates/shop-grid-left-sidebar.html">
+                    <img src="../assets/images/gallery/categories/grid-categories/06.png" class="rounded-3 img-fluid product-img" alt="">
+                  </a>
+                  <div class="mt-3">
+                    <h5 class="mb-1">Phone Holder</h5>
+                    <p class="mb-0">527 Items</p>
+                  </div>
+                  <div class="d-grid mt-3">
+                    <a href="{{url_for('shop_list_phoneholder')}}" class="btn btn-dark rounded-3 d-flex align-items-center justify-content-center gap-2 py-2"><span>Shop Now</span><i class="bi bi-arrow-up-right"></i></a>
+                  </div>
+                </div>
+              </div>
+
+            
+            </div><!--end row-->
+         </div>
+      </div>
+    </section>
+    <!--end shop-->
+
+  </main>
+  <!--end main content-->
+
+{% include "footer.html" %}

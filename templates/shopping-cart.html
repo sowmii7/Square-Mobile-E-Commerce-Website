@@ -1,0 +1,139 @@
+{% include "header.html" %}
+
+  <!--start main content-->
+  <main class="main-content">
+
+    <!--start breadcrumb-->
+    <section class="section-breadcrumb bg-img-page-header d-flex align-items-center justify-content-center">
+      <div class="container px-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>Shopping Cart</h2>
+        <nav>
+          <ol class="breadcrumb mb-0 gap-2">
+            <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i></li>
+            <li class="breadcrumb-item breadcrumb-active">Shopping Cart</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!--end breadcrumb-->
+
+     <!--start shop-->
+    <section class="py-5 my-account-section">
+      <div class="container px-3">
+        <div class="row g-lg-4">
+          <div class="col-12 col-lg-3">
+            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter"
+              class="btn btn-dark d-lg-none btn-filter-mobile rounded-bottom-0 d-flex align-items-center gap-2 px-4"><i
+                class="bi bi-funnel"></i><span>Account</span></button>
+             <nav class="navbar navbar-expand-lg p-0">
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFilter"
+                aria-labelledby="offcanvasFilterLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasFilterLabel">My account</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <div class="my-account-menu w-100 border rounded-3 p-3">
+                    <div class="list-group list-group-flush">
+                      <a href="{{url_for('account_wishlist')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3"><span><i class="bi bi-heart"></i></span>Wishlist</a>
+                      <a href="{{url_for('shopping_cart')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3 active"><span><i class="bi bi-basket-fill"></i></span>Your Cart</a>
+                      <a href="{{url_for('account_my_profile')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3 "><span><i class="bi bi-person-square"></i></span>My Profile</a>
+                      <a href="{{url_for('account_addresses')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3"><span><i class="bi bi-geo-alt"></i></span>Addresses</a>
+                      <a href="{{url_for('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 rounded-3"><span><i class="bi bi-box-arrow-left"></i></span>Logout</a>
+                    </div>
+                  </div><!--end filters-->
+                </div>
+              </div>
+            </nav>
+          </div>
+
+  <!-- RIGHT: cart list, then order summary below it -->
+      <div class="col-12 col-lg-9">
+
+        <!-- flash messages once, outside the loop -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-info py-2">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- cart list: the loop is ONLY around each product row -->
+        <div class="cart-list d-flex flex-column gap-4">
+          {% for item in items %}
+          <div class="cart-list-item d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="cart-img">
+                <img src="/assets/{{ item.image_url }}" class="rounded-3" width="80" alt="{{ item.product }}">
+              </div>
+              <div class="cart-product-info">
+                <h5 class="product-name fs-6">{{ item.product }}</h5>
+              </div>
+            </div>
+            <div class="cart-product-price">
+              <p>Price</p>
+              <h5 class="mb-0">${{ item.price}}</h5>
+            </div>
+            <div class="cart-product-qty">
+              <p>Quantity</p>
+              <form method="post" action="{{ url_for('update_cart', cart_id=item.id) }}"
+                    class="d-flex align-items-center gap-2 m-0">
+                <button type="submit" name="action" value="dec" class="btn btn-sm btn-outline-dark rounded-3 px-2">−</button>
+                <span class="fw-semibold">{{ item.quantity }}</span>
+                <button type="submit" name="action" value="inc" class="btn btn-sm btn-outline-dark rounded-3 px-2">+</button>
+              </form>
+            </div>
+              <div class="cart-product-total">
+                <p>Total</p>
+                <h5 class="mb-0">₹{{ item.line_total }}</h5>
+              </div>
+
+              <form method="post" action="{{ url_for('remove_from_cart', cart_id=item.id) }}" class="m-0">
+                <button type="submit" class="btn border border-2 cart-product-btn-delete" aria-label="Remove">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </form>
+
+            </div>
+            {% else %}
+            <p class="text-muted">Your cart is empty.</p>
+            {% endfor %}
+          </div>
+
+        <!-- order summary: one copy, below all the products -->
+        <div class="card border-0 bg-light rounded-4 mt-4">
+          <div class="card-body p-4">
+            <h4 class="mb-3">Order Summary</h4>
+            <hr>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Subtotal</span><span>₹{{ subtotal }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Discounts</span><span class="text-danger">-₹{{discount}}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Shipping</span><span>+₹{{shipping}}</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+              <span>Total</span><span>₹{{ total }}</span>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="agreeTerms">
+              <label class="form-check-label" for="agreeTerms">I agree with the terms and conditions</label>
+            </div>
+            <a href = "{{url_for('checkout')}}"  class="btn btn-dark rounded-5 w-100">Checkout</a>
+          </div>
+        </div>
+
+      </div><!-- /col-lg-9 -->
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
+
+        <!--end cart-->
+  </main>
+  <!--end main content-->
+{% include 'footer.html' %}

@@ -1,0 +1,145 @@
+<!--footer widgets-->
+<section class="footer-widgets py-5 border-top">
+  <div class="container px-3">
+    <div class="row g-4">
+       <div class="col-12 col-lg-4">
+           <div class="footer-widget-1">
+              <div class="">
+                <img src="../assets/images/gallery/logo1.1.png" width="130" alt="">
+              </div>
+              <div>
+                <address>
+                  <strong>Address:</strong>
+                  84-A Bypass Street, Tamil Nadu
+                </address>
+              </div>
+              <a href="https://maps.app.goo.gl/9TCS9pxG95Scq8go9"  target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-dark px-4">Get Direction<i class="bi bi-arrow-up-right ms-2"></i></button></a>
+              <p><span><i class="bi bi-envelope me-2"></i></span>sowmya79@gamil.com</p>
+              <p><span><i class="bi bi-telephone me-2"></i></span>9987890001</p>
+              <p><span><i class="bi bi-globe me-2"></i></span>www.squaremobiles.com</p>
+              <div class="social-link d-flex align-items-center gap-2">
+                <a href="javascript:;" class="btn btn-outline-dark"><i class="bi bi-facebook"></i></a>
+                <a href="javascript:;" class="btn btn-outline-dark"><i class="bi bi-twitter-x"></i></a>
+                <a href="javascript:;" class="btn btn-outline-dark"><i class="bi bi-instagram"></i></a>
+                <a href="javascript:;" class="btn btn-outline-dark"><i class="bi bi-youtube"></i></a>
+                <a href="javascript:;" class="btn btn-outline-dark"><i class="bi bi-amazon"></i></a>
+              </div>
+           </div>
+       </div>
+       <div class="col-12 col-lg-3">
+          <div class="d-flex align-items-start justify-content-between gap-4">
+            <div class="">
+              <h5 class="mb-3">Top Categories</h5>
+              <ul class="list-unstyled d-flex flex-column gap-2">
+                  <li><a href="{{url_for('shop_list_mobiles')}}" class="footer-link">Mobile Phones</a></li>
+                  <li><a href="{{url_for('shop_list_earphones')}}" class="footer-link">Earphones</a></li>
+                  <li><a href="{{url_for('shop_list_charger')}}" class="footer-link">Charger</a></li>
+                  <li><a href="{{url_for('shop_list_phoneholder')}}" class="footer-link">Phone Holder</a></li>
+                  <li><a href="{{url_for('shop_list_camera')}}" class="footer-link">Camera Protection</a></li>
+                  <li><a href="{{url_for('shop_list_phonecase')}}" class="footer-link">Phone Cases</a></li>
+              </ul>
+             </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 offset-lg-1">
+          <div class="footer-widget-4">
+            <h5 class="mb-3">Newletter</h5>
+            <p class="news-letter-caption">Subscribe to our newsletter and enjoy 10% off your first order</p>
+             <form method="post">
+                <div class="input-group input-group-lg mt-3">
+                  <input type="email" class="form-control border-dark" placeholder="Enter your email" required>
+                  <button class="btn btn-dark" type="submit"><i class="bi bi-arrow-up-right"></i></button>
+                </div>
+             </form>
+            <p class="news-letter-caption mt-4 mb-2">Download Mobile Application</p>
+            <div class="d-flex align-items-center gap-3">
+              <a href="javascript:;"><img src="../assets/images/gallery/google-play-store.png" width="140" class="rounded-3" alt=""></a>
+              <a href="javascript:;"><img src="../assets/images/gallery/apple-play-store.png" width="140" class="rounded-3" alt=""></a>
+            </div>
+          </div>
+        </div>
+    </div><!--end row-->
+</div>
+</section>
+<!--end footer widgets-->
+
+
+<!--start footer strip-->
+<footer class="footer-strip py-4 border-top">
+  <div class="container px-3">
+    <div class="row g-4">
+      <div class="col-12 col-lg-auto">
+        <p class="mb-0 font-12">@All rights reserved. Made by Square Mobiles</p>
+      </div>
+      <div class="col-12 col-lg-auto">
+        <div class="d-flex align-items-center gap-3">
+          <a href="javascript:;" class="font-12 text-secondary">Privacy</a>
+          <a href="javascript:;" class="font-12 text-secondary">Affiliates</a>
+          <a href="javascript:;" class="font-12 text-secondary">Terms of use</a>
+        </div>
+     </div>
+     <div class="col-12 col-lg-auto ms-lg-auto">
+      <div class="d-flex align-items-center gap-3">
+        <a href="javascript:;"><img src="../assets/images/gallery/payment/paypal.png" class="img-fluid" width="60" alt=""></a>
+        <a href="javascript:;"><img src="../assets/images/gallery/payment/visa.png" class="img-fluid" width="50" alt=""></a>
+        <a href="javascript:;"><img src="../assets/images/gallery/payment/money.png" class="img-fluid" width="35" alt=""></a>
+        <a href="javascript:;"><img src="../assets/images/gallery/payment/stripe.png" class="img-fluid" width="40" alt=""></a>
+      </div>
+     </div>
+   </div><!--end row-->
+  </div>
+</footer>
+<!--end footer strip-->
+<!--back to top button-->
+    <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+ <!--end back to top button-->
+
+
+
+  <!--start off canvas cart-->
+  <div class="offcanvas offcanvas-end offcanvas-cart p-2" tabindex="-1" id="offcanvasCart" >
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title">Shopping cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    {% if items %}
+      {% for item in cart_items %}
+    <div class="offcanvas-body">
+       <div class="cart-product-list d-flex flex-column">
+          <div class="cart-product-list-item d-flex align-items-center gap-3">
+            <div class="flex-shrink-0">
+              <a href="javascript:;">
+                <img src="/assets/{{item.image_url}}" width="100" class="cart-product-img rounded-3" alt="">
+             </a>
+            </div>
+             <div class="cart-product-info flex-grow-1">
+               <p class="mb-1 cart-product-name">{{item.product}}</p>
+               <h5 class="mb-0 cart-product-price">${{item.price}}</h5>
+               <div class="d-flex align-items-center justify-content-between mt-2">
+                 <p class="mb-0 font-14 cart-product-qty">Qty {{item.quantity}} </p>
+                 <button type="button" class="cart-product-btn-delete btn btn-outline-dark border btn-sm rounded-3"><i class="bi bi-trash3"></i></button>
+               </div>
+             </div>
+          </div>
+       </div>
+       {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+
+  <!--JS file-->
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="../assets/plugins/swiper/js/swiper-bundle.min.js"></script>
+  <script src="../assets/js/search-slider.js"></script>
+  <!-- Initialize Swiper -->
+  <script src="../assets/js/index.js"></script>
+   <!-- Initialize Swiper -->
+   <script src="../assets/js/product-details.js"></script>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

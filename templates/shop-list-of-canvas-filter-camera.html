@@ -1,0 +1,232 @@
+{% include "header.html" %}
+
+
+  <!--start main content-->
+  <main class="main-content">
+
+    <!--start breadcrumb-->
+    <section class="section-breadcrumb bg-img-page-header d-flex align-items-center justify-content-center">
+      <div class="container px-3 d-flex flex-column align-items-center justify-content-center">
+        <h2>SQUARE CAMERA PROTECTION</h2>
+        <nav>
+          <ol class="breadcrumb mb-0 gap-2">
+            <li class="breadcrumb-item"><a href="javascript:;" class="breadcrumb-link">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i></li>
+            <li class="breadcrumb-item breadcrumb-active">Square Camera Protection</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!--end breadcrumb-->
+
+    <!--start shop-->
+    <section class="py-5 shop-page-section">
+      <div class="container px-3">
+
+         <!--ofcanvas filter-->
+           <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter"
+              class="btn btn-dark btn-filter-mobile rounded-bottom-0 d-flex align-items-center gap-2 px-4"><i
+                class="bi bi-funnel"></i><span>Filter</span></button>
+
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFilter"
+                aria-labelledby="offcanvasFilterLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasFilterLabel">Filter</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <div class="shop-filters">
+                    <div class="card mb-4 rounded-3 border">
+                      <div class="card-body">
+                        <div class="selected-fillters">
+                          <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Filter</h6>
+                            <a href="javascript:;" class="link-secondary text-decoration-underline font-14">Clear
+                              all</a>
+                          </div>
+                          <div class="d-flex align-items-center flex-wrap gap-2">
+                            <button
+                              class="btn btn-sm border btn-outline-dark px-3 d-flex align-items-center gap-1 rounded-5"><span>Shirts</span><i
+                                class="bi bi-x-lg"></i></button>
+                            <button
+                              class="btn btn-sm border btn-outline-dark px-3 d-flex align-items-center gap-1 rounded-5"><span>Jeans</span><i
+                                class="bi bi-x-lg"></i></button>
+                            <button
+                              class="btn btn-sm border btn-outline-dark px-3 d-flex align-items-center gap-1 rounded-5"><span>M</span><i
+                                class="bi bi-x-lg"></i></button>
+                            <button
+                              class="btn btn-sm border btn-outline-dark px-3 d-flex align-items-center gap-1 rounded-5"><span>L</span><i
+                                class="bi bi-x-lg"></i></button>
+                            <button
+                              class="btn btn-sm border btn-outline-dark px-3 d-flex align-items-center gap-1 rounded-5"><i
+                                class="bi bi-circle-fill text-danger"></i><span>Red</span><i
+                                class="bi bi-x-lg"></i></button>
+                            <button
+                              class="btn btn-sm border btn-outline-dark px-3 d-flex align-items-center gap-1 rounded-5"><i
+                                class="bi bi-circle-fill text-primary"></i><span>Blue</span><i
+                                class="bi bi-x-lg"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card rounded-3 mb-4 border">
+                      <div class="card-body p-4">
+                        <div class="categories-filter">
+                          <h5 class="mb-3">Categories</h5>
+                          <div class="list-group list-group-flush mb-0 gap-2">
+                            <a href="javascript:;"
+                              class="list-group-item d-flex align-items-center justify-content-between p-0 border-bottom-0">
+                              <span class="category-name">Charger</span>
+                              <span class="category-number">279</span>
+                            </a>
+                            <a href="javascript:;"
+                              class="list-group-item d-flex align-items-center justify-content-between p-0 border-bottom-0">
+                              <span class="category-name">Earphones</span>
+                              <span class="category-number">287</span>
+                            </a>
+                            <a href="javascript:;"
+                              class="list-group-item d-flex align-items-center justify-content-between p-0 border-bottom-0">
+                              <span class="category-name">Phone Holder</span>
+                              <span class="category-number">348</span>
+                            </a>
+                            <a href="javascript:;"
+                              class="list-group-item d-flex align-items-center justify-content-between p-0 border-bottom-0">
+                              <span class="category-name">Mobile Case</span>
+                              <span class="category-number">663</span>
+                            </a>
+                            <a href="javascript:;"
+                              class="list-group-item d-flex align-items-center justify-content-between p-0 border-bottom-0">
+                              <span class="category-name">Camera protection</span>
+                              <span class="category-number">456</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card rounded-3 mb-4 border">
+                      <div class="card-body p-4">
+                        <div class="stock-filter">
+                          <h5 class="mb-3">Brands</h5>
+                          <div class="form-check mb-2 align-items-center">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckBrand1">
+                            <label class="form-check-label" for="flexCheckBrand1">Apple</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckBrand2">
+                            <label class="form-check-label" for="flexCheckBrand2">Samsung</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckBrand3">
+                            <label class="form-check-label" for="flexCheckBrand3">Miami</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckBrand4">
+                            <label class="form-check-label" for="flexCheckBrand4">Techno</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckBrand5">
+                            <label class="form-check-label" for="flexCheckBrand5">Honor</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckBrand6">
+                            <label class="form-check-label" for="flexCheckBrand6">Redmi</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckBrand7">
+                            <label class="form-check-label" for="flexCheckBrand7">Google Pixel</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card rounded-3 mb-0 border">
+                      <div class="card-body p-4">
+                        <div class="stock-filter">
+                          <h5 class="mb-3">Availability</h5>
+                          <div class="form-check mb-2 align-items-center">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckInstock">
+                            <label class="form-check-label" for="flexCheckInstock">In stock</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckOutofStock">
+                            <label class="form-check-label" for="flexCheckOutofStock">Out of stock</label>
+                          </div>
+                          <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckOnSale" checked>
+                            <label class="form-check-label" for="flexCheckOnSale">On Sale</label>
+                          </div>
+                          <div class="form-check mb-0">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckFreedelivery">
+                            <label class="form-check-label" for="flexCheckFreedelivery">Free delivery</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!--end filters-->
+
+            <div class="shop-products d-flex flex-column gap-4">
+              <div
+                class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 gap-sm-0">
+                <div>
+                  <p class="mb-0">Found <span class="fw-semibold">68</span> items</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+
+                  </div>
+                </div>
+              </div>
+
+              {% for camera in all_cameras %}
+
+              <div class="product-card-list rounded-3 p-3 border">
+                <div class="row g-4">
+                  <div class="col-12 col-lg-3">
+                    <a href="product-detail.html">
+                      <img src="{{url_for('static', filename = camera.image_url ) }}" class="product-img img-fluid rounded-3"
+                           alt="">
+                    </a>
+                  </div>
+                  <div class="col-12 col-lg-9">
+                    <h3 class="product-name mb-1">Armor AR+AF Camera Lens Protection for iPhone 14</h3>
+                    <p class="mb-0 product-price d-flex align-items-center gap-2"><span
+                        class="prev-price text-decoration-line-through"> ₹ 2000</span> ₹ {{camera.price}} </p>
+                    <p class="product-short-desc mt-3 mb-4"> {{camera.description}} </p>
+
+                    <div class="d-flex flex-column flex-xl-row align-items-xl-center gap-3 mt-4">
+                      <div class="product-cart">
+                        <form method="post" action="{{ url_for('add_to_cart', category='cameras', product_id=camera.id) }}">
+                          <button type="submit" class="btn btn-dark rounded-5 px-5 w-300">Add to cart</button>
+                        </form>
+                      </div>
+                      <div class="product-actions">
+                        <div class="d-flex flex-row gap-2">
+                          <form method = "post" action = "{{url_for('add_wishlist', category = 'cameras', product_id = camera.id)}}">
+                          <button type = "submit" class="btn btn-outline-dark border btn-action"><i
+                              class="bi bi-heart"></i></button>
+                          </form>
+                          <a href="javascript:;" class="btn btn-outline-dark border btn-action"><i
+                              class="bi bi-funnel"></i></a>
+                          <form method = "post" action = "{{url_for('product_detail', category = 'cameras', product_id = camera.id)}}">
+                            <button type = "submit" class="btn btn-outline-dark border btn-action"><i
+                              class="bi bi-eye"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+
+      </div>
+    </section>
+    <!--end shop-->
+
+  </main>
+  <!--end main content-->
+
+
+{% include "footer.html" %}
