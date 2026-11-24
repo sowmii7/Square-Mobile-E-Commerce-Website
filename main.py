@@ -167,6 +167,10 @@ total_price = 0
 def inject_counts():
     wishlist_count = 0
     cart_list_count = 0
+
+    if not current_user.is_authenticated:
+        return dict(cart_items=[], cart_total=0, cart_list_count=0, wishlist_count=0)
+
     if current_user.is_authenticated:
         wishlist_count = db.session.execute(
             db.select(func.count(Wishlist.id)).where(Wishlist.user_id == current_user.id)
