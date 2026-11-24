@@ -1,3 +1,4 @@
+import binary
 from flask import Flask, render_template, request, url_for, flash, redirect, abort
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
@@ -13,7 +14,6 @@ import os
 import stripe
 from dotenv import load_dotenv
 import psycopg2
-import psycopg_binary
 
 
 
