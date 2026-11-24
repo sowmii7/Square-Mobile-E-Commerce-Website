@@ -290,7 +290,9 @@ def contact():
 def shop_grid_categories():
     return render_template("shop-grid-catgories.html")
 
-
+@app.route('/header')
+def header():
+    return render_template("header.html", current_user=current_user)
 
 @app.route('/shop_list_mobiles')
 def shop_list_mobiles():
